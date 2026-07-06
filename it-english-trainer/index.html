@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT English Trainer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+  <div class="background-glow glow-three"></div>
+
+  <header class="hero">
+    <div>
+      <p class="badge">IT Support English Practice</p>
+      <h1>IT English Trainer</h1>
+      <p>Practice English for helpdesk, tickets, troubleshooting and IT job interviews.</p>
+    </div>
+
+    <div class="hero-actions">
+      <button id="themeBtn" class="ghost-btn">Light Mode</button>
+      <button id="resetBtn" class="ghost-btn">Reset Progress</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="stat-card">
+        <span>Points</span>
+        <strong id="points">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Correct</span>
+        <strong id="correct">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Streak</span>
+        <strong id="streak">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Level</span>
+        <strong id="level">Beginner</strong>
+      </div>
+    </section>
+
+    <section class="tabs">
+      <button class="tab active" data-tab="flashcards">Flashcards</button>
+      <button class="tab" data-tab="quiz">Quiz</button>
+      <button class="tab" data-tab="typing">Typing Practice</button>
+      <button class="tab" data-tab="tickets">Ticket Simulator</button>
+      <button class="tab" data-tab="chat">Client Chat</button>
+      <button class="tab" data-tab="interview">Interview</button>
+      <button class="tab" data-tab="daily">Daily Challenge</button>
+      <button class="tab" data-tab="dictionary">Dictionary</button>
+      <button class="tab" data-tab="mistakes">Mistakes</button>
+      <button class="tab" data-tab="achievements">Achievements</button>
+    </section>
+
+    <section id="flashcards" class="panel active">
+      <h2>Flashcards</h2>
+      <div class="card">
+        <p class="small" id="flashCategory"></p>
+        <h3 id="flashPhrase"></h3>
+        <p id="flashAnswer" class="answer hidden"></p>
+        <div class="buttons">
+          <button id="showAnswerBtn">Show Answer</button>
+          <button id="nextFlashBtn">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="panel">
+      <h2>Quick Quiz</h2>
+      <div class="card">
+        <p class="small">Choose the correct translation:</p>
+        <h3 id="quizQuestion"></h3>
+        <div id="quizOptions" class="options"></div>
+        <p id="quizFeedback" class="feedback"></p>
+        <button id="nextQuizBtn">Next Question</button>
+      </div>
+    </section>
+
+    <section id="typing" class="panel">
+      <h2>Typing Practice</h2>
+      <div class="card">
+        <p class="small">Translate into English:</p>
+        <h3 id="typingQuestion"></h3>
+        <input id="typingInput" type="text" placeholder="Type your answer here..." />
+        <div class="buttons">
+          <button id="checkTypingBtn">Check</button>
+          <button id="nextTypingBtn">Next</button>
+        </div>
+        <p id="typingFeedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <section id="tickets" class="panel">
+      <h2>Ticket Simulator</h2>
+      <div class="card">
+        <p class="small">User message:</p>
+        <h3 id="ticketText"></h3>
+
+        <label for="replyInput">Write your reply in English:</label>
+        <textarea id="replyInput" placeholder="Example: Please restart your computer and try again."></textarea>
+
+        <div class="buttons">
+          <button id="checkReplyBtn">Check Reply</button>
+          <button id="nextTicketBtn">Next Ticket</button>
+        </div>
+
+        <p id="ticketFeedback" class="feedback"></p>
+        <div id="sampleReply" class="sample hidden"></div>
+      </div>
+    </section>
+
+    <section id="chat" class="panel">
+      <h2>Client Chat</h2>
+      <div class="card">
+        <p class="small">Choose the best response:</p>
+        <h3 id="chatProblem"></h3>
+        <div id="chatOptions" class="options"></div>
+        <p id="chatFeedback" class="feedback"></p>
+        <button id="nextChatBtn">Next Chat</button>
+      </div>
+    </section>
+
+    <section id="interview" class="panel">
+      <h2>Interview Practice</h2>
+      <div class="card">
+        <p class="small">Answer this IT interview question:</p>
+        <h3 id="interviewQuestion"></h3>
+        <textarea id="interviewInput" placeholder="Write your answer in English..."></textarea>
+        <div class="buttons">
+          <button id="showInterviewBtn">Show Example Answer</button>
+          <button id="nextInterviewBtn">Next Question</button>
+        </div>
+        <div id="interviewExample" class="sample hidden"></div>
+      </div>
+    </section>
+
+    <section id="daily" class="panel">
+      <h2>Daily Challenge</h2>
+      <div class="card">
+        <p class="small">Complete 5 random tasks today.</p>
+        <h3 id="dailyQuestion"></h3>
+        <div id="dailyOptions" class="options"></div>
+        <p id="dailyProgress"></p>
+        <p id="dailyFeedback" class="feedback"></p>
+        <button id="startDailyBtn">Start / Restart Daily Challenge</button>
+      </div>
+    </section>
+
+    <section id="dictionary" class="panel">
+      <h2>IT Dictionary</h2>
+      <select id="categoryFilter">
+        <option value="all">All categories</option>
+      </select>
+      <input id="searchInput" type="text" placeholder="Search phrase..." />
+      <div id="dictionaryList" class="dictionary-list"></div>
+    </section>
+
+    <section id="mistakes" class="panel">
+      <h2>Mistakes Review</h2>
+      <div class="card">
+        <p class="small">Here you can repeat answers you got wrong.</p>
+        <div id="mistakesList" class="dictionary-list"></div>
+        <button id="clearMistakesBtn">Clear Mistakes</button>
+      </div>
+    </section>
+
+    <section id="achievements" class="panel">
+      <h2>Achievements</h2>
+      <div id="achievementsList" class="achievement-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made for IT support English practice 💻</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
